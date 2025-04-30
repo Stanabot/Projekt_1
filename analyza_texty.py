@@ -1,100 +1,187 @@
-"""
-projekt_1.py: první projekt do Engeto Online Python Akademie
-
-Autor: Stanislava Jahodová
-Email: stanislavajahodova@gmail.com
-"""
-
-# === TEXTY K ANALÝZE ===
-TEXTS = [
-    '''Situated about 10 miles west of Kemmerer,
-    Fossil Butte is a ruggedly impressive
-    topographic feature that rises sharply
-    some 1000 feet above Twin Creek Valley
-    to an elevation of more than 7500 feet
-    above sea level. The butte is located just
-    north of US 30 and the Union Pacific Railroad,
-    which traverse the valley.''',
-
-    '''At the base of Fossil Butte are the bright
-    red, purple, yellow and gray beds of the Wasatch
-    Formation. Eroded portions of these horizontal
-    beds slope gradually upward from the valley floor
-    and steepen abruptly. Overlying them and extending
-    to the top of the butte are the much steeper
-    buff-to-white beds of the Green River Formation,
-    which are about 300 feet thick.''',
-
-    '''The monument contains 8198 acres and protects
-    a portion of the largest deposit of freshwater fish
-    fossils in the world. The richest fossil fish deposits
-    are found in multiple limestone layers, which lie some
-    100 feet below the top of the butte. The fossils
-    represent several varieties of perch, as well as
-    other freshwater genera and herring similar to those
-    in modern oceans. Other fish such as paddlefish,
-    garpike and stingray are also present.'''
-]
-
-# === REGISTROVANÍ UŽIVATELÉ ===
-uzivatele = {
-    "bob": "123",
-    "ann": "pass123",
-    "mike": "password123",
-    "liz": "pass123"
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d6ffb95c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"\n",
+    "projekt_1.py: první projekt do Engeto Online Python Akademie\n",
+    "\n",
+    "autor: Stanislava Jahodová\n",
+    "email: stanislavajahodova@gmail.com\n",
+    "\"\"\"\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "260b179e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "uživatelské jméno: bob\n",
+      "heslo: 123\n",
+      "------------------------------------------\n",
+      "Vítej v naší aplikaci, Bob.\n",
+      "------------------------------------------\n",
+      "Máme pro tebe na výběr 3 texty k analýze.\n",
+      "------------------------------------------\n",
+      "Zadej číslo od 1 do 3:  2\n",
+      "------------------------------------------\n",
+      "Ve zvoleném textu je:\n",
+      "celkový počet slov: 62\n",
+      "počet slov začínajících Velkým písmenem: 10\n",
+      "počet slov psaných VELKÝMI PÍSMENY: 0\n",
+      "počet slov psaných malými písmeny: 51\n",
+      "počet čísel: 1\n",
+      "suma všech čísel: 300\n",
+      "------------------------------------------\n",
+      " DELKA|      VYSKYT      | POČET\n",
+      "------------------------------------------\n",
+      "     2|**                |7\n",
+      "     3|***               |17\n",
+      "     4|****              |9\n",
+      "     5|*****             |10\n",
+      "     6|******            |7\n",
+      "     7|*******           |3\n",
+      "     8|********          |2\n",
+      "     9|*********         |5\n",
+      "    10|**********        |1\n",
+      "    13|*************     |1\n"
+     ]
+    }
+   ],
+   "source": [
+    "TEXTS = [\n",
+    "    '''Situated about 10 miles west of Kemmerer,\n",
+    "    Fossil Butte is a ruggedly impressive\n",
+    "    topographic feature that rises sharply\n",
+    "    some 1000 feet above Twin Creek Valley\n",
+    "    to an elevation of more than 7500 feet\n",
+    "    above sea level. The butte is located just\n",
+    "    north of US 30 and the Union Pacific Railroad,\n",
+    "    which traverse the valley.''',\n",
+    "    '''At the base of Fossil Butte are the bright\n",
+    "    red, purple, yellow and gray beds of the Wasatch\n",
+    "    Formation. Eroded portions of these horizontal\n",
+    "    beds slope gradually upward from the valley floor\n",
+    "    and steepen abruptly. Overlying them and extending\n",
+    "    to the top of the butte are the much steeper\n",
+    "    buff-to-white beds of the Green River Formation,\n",
+    "    which are about 300 feet thick.''',\n",
+    "    '''The monument contains 8198 acres and protects\n",
+    "    a portion of the largest deposit of freshwater fish\n",
+    "    fossils in the world. The richest fossil fish deposits\n",
+    "    are found in multiple limestone layers, which lie some\n",
+    "    100 feet below the top of the butte. The fossils\n",
+    "    represent several varieties of perch, as well as\n",
+    "    other freshwater genera and herring similar to those\n",
+    "    in modern oceans. Other fish such as paddlefish,\n",
+    "    garpike and stingray are also present.'''\n",
+    "]\n",
+    "\n",
+    "# Registrovaní uživatelé\n",
+    "uzivatele = {\n",
+    "    \"bob\": \"123\",\n",
+    "    \"ann\": \"pass123\",\n",
+    "    \"mike\": \"password123\",\n",
+    "    \"liz\": \"pass123\"\n",
+    "}\n",
+    "\n",
+    "# Ověření registrace:\n",
+    "jmeno = input(\"Zadej přihlašovací jméno: \")\n",
+    "heslo = input(\"Zadej heslo: \")\n",
+    "\n",
+    "print(f\"uživatelské jméno: {jmeno}\")\n",
+    "print(f\"heslo: {heslo}\")\n",
+    "\n",
+    "if jmeno not in uzivatele or heslo != uzivatele[jmeno]:\n",
+    "   print(\"neregistrovaný uživatel - ukončuji program\")\n",
+    "   \n",
+    "\n",
+    "# Uvítání registrovaného uživatele\n",
+    "oddelovac = \"-\" * 42\n",
+    "pocet_textu = len(TEXTS) \n",
+    "print(f\"{oddelovac}\\nVítej v naší aplikaci, {jmeno.title()}.\\n{oddelovac}\")\n",
+    "print(f\"Máme pro tebe na výběr {len(TEXTS)} texty k analýze.\\n{oddelovac}\")\n",
+    "\n",
+    "# Výběr textu\n",
+    "print(f\"Zadej číslo od 1 do {len(TEXTS)}: \",end=\" \")\n",
+    "volba = input(f\"Zadej číslo 1-{len(TEXTS)}: \")\n",
+    "print(f\"{volba}\\n{oddelovac}\")\n",
+    " \n",
+    "if not volba.isdigit():\n",
+    "    print(\"nebylo zadáno číslo - ukončuji program.\")\n",
+    "    \n",
+    "volba = int(volba)\n",
+    "if not (1 <= volba <= len(TEXTS)):\n",
+    "    print(\"číslo je mimo rozsah - ukončuji program.\")    \n",
+    "\n",
+    "# Četnost slov ve zvoleném textu\n",
+    "text = TEXTS[volba - 1]\n",
+    "slova = [slovo.strip(\",.-;'\")for slovo in text.split()]\n",
+    "\n",
+    "print(\"Ve zvoleném textu je:\")\n",
+    "print(f\"celkový počet slov: {len(slova)}\")\n",
+    "print(\n",
+    "    f\"počet slov začínajících Velkým písmenem: \"\n",
+    "    f\"{len([slovo for slovo in slova if slovo.istitle()])}\"\n",
+    "    )\n",
+    "print(\n",
+    "    f\"počet slov psaných VELKÝMI PÍSMENY: \"\n",
+    "    f\"{len([slovo for slovo in slova if slovo.isupper()])}\"\n",
+    "    )\n",
+    "print(\n",
+    "    f\"počet slov psaných malými písmeny: \"\n",
+    "    f\"{len([slovo for slovo in slova if slovo.islower()])}\"\n",
+    "    )\n",
+    "\n",
+    "cisla = [int(slovo) for slovo in slova if slovo.isdigit()]\n",
+    "\n",
+    "print(f\"počet čísel: {len(cisla)}\")\n",
+    "print(f\"suma všech čísel: {sum(cisla)}\\n{oddelovac}\")\n",
+    "\n",
+    "# Graf - četnost různých délek slov v textu\n",
+    "print(f\"{\"DELKA\":>6}|{\"VYSKYT\":^18}| POČET\\n{oddelovac}\")\n",
+    "\n",
+    "vyskyt = {} \n",
+    "for slovo in slova:\n",
+    "    delka = len(slovo)\n",
+    "    vyskyt[delka] = 1 if delka not in vyskyt else vyskyt[delka] + 1\n",
+    "\n",
+    "for delka in sorted(vyskyt.keys()):\n",
+    "    hvezdicky = \"*\" * delka\n",
+    "    print(f\"{delka:>6}|{hvezdicky:<18}|{vyskyt[delka]}\")\n",
+    "\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
 }
-
-# === PŘIHLÁŠENÍ ===
-jmeno = input("Zadej přihlašovací jméno: ")
-heslo = input("Zadej heslo: ")
-
-print(f"uživatelské jméno: {jmeno}")
-print(f"heslo: {heslo}")
-
-if jmeno not in uzivatele or heslo != uzivatele[jmeno]:
-    print("Neregistrovaný uživatel – ukončuji program.")
-    exit()
-
-# === UVÍTÁNÍ ===
-oddelovac = "-" * 42
-print(f"{oddelovac}\nVítej v naší aplikaci, {jmeno.title()}.\n{oddelovac}")
-print(f"Máme pro tebe na výběr {len(TEXTS)} texty k analýze.\n{oddelovac}")
-
-# === VÝBĚR TEXTU ===
-volba = input(f"Zadej číslo 1-{len(TEXTS)}: ")
-print(f"{volba}\n{oddelovac}")
-
-if not volba.isdigit():
-    print("Nebyl zadán platný číselný vstup – ukončuji program.")
-    exit()
-
-volba = int(volba)
-if not (1 <= volba <= len(TEXTS)):
-    print("Číslo je mimo rozsah – ukončuji program.")
-    exit()
-
-# === ANALÝZA TEXTU ===
-text = TEXTS[volba - 1]
-slova = [slovo.strip(",.-;'") for slovo in text.split()]
-
-print("Ve zvoleném textu je:")
-print(f"Celkový počet slov: {len(slova)}")
-print(f"Počet slov začínajících velkým písmenem: {len([s for s in slova if s.istitle()])}")
-print(f"Počet slov psaných VELKÝMI písmeny: {len([s for s in slova if s.isupper()])}")
-print(f"Počet slov psaných malými písmeny: {len([s for s in slova if s.islower()])}")
-
-cisla = [int(s) for s in slova if s.isdigit()]
-print(f"Počet čísel: {len(cisla)}")
-print(f"Suma všech čísel: {sum(cisla)}\n{oddelovac}")
-
-# === GRAF ČETNOSTI DÉLEK SLOV ===
-print(f"{'DELKA':>6}|{'VÝSKYT':^18}| POČET\n{oddelovac}")
-
-vyskyt = {}
-for slovo in slova:
-    delka = len(slovo)
-    vyskyt[delka] = vyskyt.get(delka, 0) + 1
-
-for delka in sorted(vyskyt):
-    hvezdy = '*' * vyskyt[delka]
-    print(f"{delka:>6}|{hvezdy:<18}| {vyskyt[delka]}")
